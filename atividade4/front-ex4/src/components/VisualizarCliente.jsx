@@ -58,7 +58,7 @@ function VisualizarCliente() {
     <div>
       <Navbar />
       <table className="mx-auto w-screen h-96">
-        <tbody className="bg-gray-200">
+        <tbody className="bg-yellow-200">
           <tr className="border border-black">
             <th>Nome</th>
             <td>{cliente.nome}</td>
