@@ -21,7 +21,6 @@ function CadastroCliente() {
     console.log(cliente)
   }, [])
 
-  // CADASTRO DO CLIENTE
   const [cliente, setCliente] = useState({
     id: "",
     nome: "",
@@ -118,9 +117,9 @@ function CadastroCliente() {
   }
 
   return (
-    <div>
+    <div className="bg-yellow-100">
       <Navbar />
-      <form className="mx-auto w-screen max-w-xl" onSubmit={handleSubmit}>
+      <form className="mx-auto w-screen max-w-xl my-5" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-2" htmlFor="nome">
             Nome:
@@ -289,14 +288,14 @@ function CadastroCliente() {
           ))}
           <button
             type="button"
-            className="px-3 py-2 bg-green-500 text-white rounded"
+            className="px-3 py-2 bg-yellow-500 text-white rounded"
             onClick={handleAddTelefone}
           >
             Adicionar Telefone
           </button>
         </div>
         <div className="mb-4">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded" type="submit">
+          <button className="px-4 py-2 bg-green-500 text-white rounded" type="submit">
             Cadastrar
           </button>
         </div>

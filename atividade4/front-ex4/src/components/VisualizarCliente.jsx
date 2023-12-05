@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
-import { Navbar } from "./Navbar"
+import React, { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Navbar } from "./Navbar";
 
 function VisualizarCliente() {
-  const { id } = useParams()
-  const [cliente, setCliente] = useState(null)
+  const { id } = useParams();
+  const [cliente, setCliente] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleEditar = () => {
-    navigate(`/atualizar/${id}`)
-  }
+    navigate(`/atualizar/${id}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:32831/cliente/${id}`)
-        const data = await response.json()
-        setCliente(data)
+        const response = await fetch(`http://localhost:32831/cliente/${id}`);
+        const data = await response.json();
+        setCliente(data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
 
-    fetchData()
-  }, [id])
+    fetchData();
+  }, [id]);
 
   const handleDelete = () => {
     fetch(`http://localhost:32831/cliente/excluir`, {
@@ -37,21 +37,21 @@ function VisualizarCliente() {
       .then((response) => {
         if (response.ok) {
           // Exclusão bem-sucedida
-          alert("Cliente excluído com sucesso.")
-          navigate("/clientes")
+          alert("Cliente excluído com sucesso.");
+          navigate("/clientes");
         } else {
           // Ocorreu um erro na exclusão
-          alert("Ocorreu um erro ao excluir o cliente.")
-          navigate("/clientes")
+          alert("Ocorreu um erro ao excluir o cliente.");
+          navigate("/clientes");
         }
       })
       .catch((error) => {
-        console.error(error)
-      })
-  }
+        console.error(error);
+      });
+  };
 
   if (!cliente) {
-    return <div>Carregando...</div>
+    return <div>Carregando...</div>;
   }
 
   return (
@@ -74,8 +74,9 @@ function VisualizarCliente() {
           <tr className="border border-black">
             <th>Endereço</th>
             <td>
-              {cliente.endereco.rua}, {cliente.endereco.numero}, {cliente.endereco.bairro},{" "}
-              {cliente.endereco.cidade}, {cliente.endereco.estado}, {cliente.endereco.codigoPostal}
+              {cliente.endereco.rua}, {cliente.endereco.numero},{" "}
+              {cliente.endereco.bairro}, {cliente.endereco.cidade},{" "}
+              {cliente.endereco.estado}, {cliente.endereco.codigoPostal}
             </td>
           </tr>
           <tr className="border border-black">
@@ -105,7 +106,7 @@ function VisualizarCliente() {
         </tfoot>
       </table>
     </div>
-  )
+  );
 }
 
-export default VisualizarCliente
+export default VisualizarCliente;

@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { Navbar } from "./Navbar"
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Navbar } from "./Navbar";
 
 export const TabelaClientes = () => {
-  const [clientes, setClientes] = useState([])
+  const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:32831/cliente/clientes")
-        const data = await response.json()
-        setClientes(data)
+        const response = await fetch("http://localhost:32831/cliente/clientes");
+        const data = await response.json();
+        setClientes(data);
       } catch (error) {
-        console.error("Erro ao obter dados:", error)
+        console.error("Erro ao obter dados:", error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRedirect = () => {
-    return navigate("/cadastrar")
-  }
+    return navigate("/cadastrar");
+  };
   return (
-    <div className="bg-gray-100 w-screen h-screen">
+    <div className="bg-yellow-100 w-screen h-screen">
       <div className="logo-container">
-      <img src="src/assets/logo.png"/>
-    </div>
+        <img src="src/assets/logo.png" />
+      </div>
       <Navbar />
-      <button className="w-screen bg-gray-500 text-white" onClick={handleRedirect}>Cadastrar Cliente</button>
+
       <table className="mx-auto w-screen text-center">
-        <thead className="bg-gray-200">
+        <thead className="bg-yellow-500">
           <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -63,6 +63,14 @@ export const TabelaClientes = () => {
           ))}
         </tbody>
       </table>
+      <div className="button-container">
+        <button
+          className="w-screen text-black h-24 w-32"
+          onClick={handleRedirect}
+        >
+          Cadastrar Cliente
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
